@@ -1,0 +1,23 @@
+{
+  "name": "hackaentel-repo",
+  "version": "1.0.0",
+  "description": "Node.js API for hackaentel solution",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salozord/hackaentel-repo.git"
+  },
+  "keywords": [
+    "entel",
+    "hackaton"
+  ],
+  "author": "Team Betriax, Alfi, SmartDoctor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/salozord/hackaentel-repo/issues"
+  },
+  "homepage": "https://github.com/salozord/hackaentel-repo#readme"
+}
