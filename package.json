@@ -14,10 +14,14 @@
     "entel",
     "hackaton"
   ],
-  "author": "Team Betriax, Alfi, SmartDoctor",
+  "author": "MAVERICK",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/salozord/hackaentel-repo/issues"
   },
-  "homepage": "https://github.com/salozord/hackaentel-repo#readme"
+  "homepage": "https://github.com/salozord/hackaentel-repo#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
 }
