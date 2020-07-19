@@ -25,7 +25,7 @@ csv()
         provincArr.push({name: pro[0] + pro.slice(1).toLowerCase(), value: provinc[pro]});
     }
     for (var dis in district) {
-        districtArr.push({name: dis[0] + dis.slice(1).toLowerCase().capita, value: district[dis]});
+        districtArr.push({name: dis[0] + dis.slice(1).toLowerCase(), value: district[dis]});
     }
 
     fs.writeFileSync("../result.json",JSON.stringify( {Departamento: deptosArr, Provincia: provincArr, Distrito: districtArr}))

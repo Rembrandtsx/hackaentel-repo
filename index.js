@@ -47,20 +47,20 @@ async function sendAudience(req, res, next) {
             let search = fs.readFileSync('result.json');
             search = JSON.parse(search);
 
-            if(threshold.startsWith("top") && threshold.length > 3 && Number.isInteger(threshold.slice(4))) {
+            if(threshold.startsWith("top") && threshold.length > 3 && /^\d+$/.test(threshold.slice(3))) {
                 let specific = search[localization];
                 if(specific) {
                     specific.sort((a, b) => b.value - a.value);
-                    res.status(200).send(specific.slice(0, threshold.slice(4)));
+                    res.status(200).send(specific.slice(0, threshold.slice(3)));
                 }
                 else
                     error(res, 400, "Incorrect query param 'localization'");
             }
-            else if (threshold.startsWith("ultimos") && threshold.length > 7 && Number.isInteger(threshold.slice(8))) {
+            else if (threshold.startsWith("ultimos") && threshold.length > 7 && /^\d+$/.test(threshold.slice(7))) {
                 let specific = search[localization];
                 if(specific) {
                     specific.sort((a, b) => a.value - b.value);
-                    res.status(200).send(specific.slice(0, threshold.slice(8)));
+                    res.status(200).send(specific.slice(0, threshold.slice(7)));
                 }
                 else
                     error(res, 400, "Incorrect query param 'localization'");
