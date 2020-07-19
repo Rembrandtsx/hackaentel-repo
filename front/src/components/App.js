@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from '../logo.svg';
-import './App.css';
+import React from "react";
 
+import "./App.scss";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
+import Header from "./Header";
+import MainEmpresas from "./MainEmpresas";
+import MainPymes from "./MainPymes";
+import MainPersonas from "./MainPersonas";
+import MainDefault from "./MainDefault";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header></Header>
+      <Router>
+        <Components></Components>
+      </Router>
+    </>
   );
 }
-
+function Components() {
+  let query = useQuery();
+  return (
+    <>
+      <Switch>
+        <MainEmpresas
+          amount={query.get("amount")}
+          path="/empresas"
+        ></MainEmpresas>
+        <MainPymes amount={query.get("amount")} path="/pymes"></MainPymes>
+        <MainPersonas
+          amount={query.get("amount")}
+          path="/personas"
+        ></MainPersonas>
+        <MainDefault amount={query.get("amount")} path="/"></MainDefault>
+      </Switch>
+    </>
+  );
+}
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 export default App;
