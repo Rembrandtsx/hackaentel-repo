@@ -13,6 +13,7 @@ import MainEmpresas from "./MainEmpresas";
 import MainPymes from "./MainPymes";
 import MainPersonas from "./MainPersonas";
 import MainDefault from "./MainDefault";
+import MainMicros from "./MainMicros";
 function App() {
   return (
     <>
@@ -37,6 +38,7 @@ function Components() {
           amount={query.get("amount")}
           path="/personas"
         ></MainPersonas>
+        <MainMicros amount={query.get("amount")} path="/micros"></MainMicros>
         <MainDefault amount={query.get("amount")} path="/"></MainDefault>
       </Switch>
     </>

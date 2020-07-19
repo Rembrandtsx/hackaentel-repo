@@ -26,8 +26,8 @@ export default function Header() {
           <a href="#como-funciona">
             <li>¿Cómo funciona?</li>
           </a>
-          <a href="#">
-            <li>El producto</li>
+          <a href="#plan">
+            <li>El plan</li>
           </a>
         </ul>
       </nav>

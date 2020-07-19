@@ -10,10 +10,10 @@ export default function MainPersonas({ amount }) {
           <div className="logos">
             <img src={entel} alt="" /> <h3> + </h3> <img src={smart} alt="" />
           </div>
-          <h2>Es hora de que prevengas el COVID-19 en tu empresa</h2>
+          <h2>Es hora de que prevengas el COVID-19 para ti y tu familia</h2>
           <p>
-            Con EnteleSalud puedes prevenir el contagio del COVID-19 en tu
-            empresa, evitando perder dinero en tu negocio
+            Con EnteleSalud puedes prevenir el contagio del COVID-19 evitando
+            causar tristezas a tus familiares.
           </p>
           <button>Obtenlo ahora</button>
         </div>
@@ -194,7 +194,7 @@ export default function MainPersonas({ amount }) {
           </div>
         </div>
       </article>
-      <article className="plan">
+      <article className="plan" id="plan">
         <h2>Tenemos un plan hecho a la medida para tu empresa</h2>
         <h5>
           Sabemos que en tu empresa tienes a {amount} empleados, por esto
@@ -202,9 +202,7 @@ export default function MainPersonas({ amount }) {
         </h5>
         <div className="card">
           <div className="card-head">
-            <div className="plan-name">
-              EnteleSalud Empresas y Corporaciones
-            </div>
+            <div className="plan-name">Enteltecuida personas</div>
             <div className="plan-services">
               <div>
                 <svg
@@ -465,16 +463,16 @@ export default function MainPersonas({ amount }) {
                 </li>
                 <li>
                   <span>
-                    <b>3 Teleconsultas</b> por chat o videollamda /mes/empleado
+                    <b>3 Teleconsultas</b> videollamda /año
                   </span>
                 </li>
                 <li>
-                  <span>Todo esto por 10 USD /mes /empleado</span>
+                  <span>Todo esto por 13 USD /año</span>
                 </li>
               </ul>
             </div>
           </div>
-          <button>Obtenlo ahora por $10 USD/Mes/Empleado</button>
+          <button>Obtenlo ahora por $13 USD/año</button>
         </div>
       </article>
     </>

@@ -201,7 +201,7 @@ export default function MainEmpresas({ amount }) {
             </div>
           </div>
         </article>
-        <article className="plan">
+        <article className="plan" id="plan">
           <h2>Tenemos un plan hecho a la medida para tu empresa</h2>
           <h5>
             Sabemos que en tu empresa tienes a {amount} empleados, por esto
