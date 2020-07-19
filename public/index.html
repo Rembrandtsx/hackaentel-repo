@@ -56,7 +56,7 @@
     <script>
         document.querySelector("#but-riesgo").addEventListener("click", async (event) => {
             let pet = await fetch("/api/json");
-            let text = pet.text();
+            let text = await pet.text();
             document.querySelector("#riesgo").innerText = text;
         });
     </script>
