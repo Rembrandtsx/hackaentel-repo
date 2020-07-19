@@ -84,7 +84,20 @@ async function sendAudience(req, res, next) {
 }
 
 async function sendClients(req, res, next) {
+    let { localization, value, search } = req.query;
     
+    try {
+        if (localization && value && search) {
+            
+        }
+        else {
+            error(res, 400, "Missing mandatory query params 'value', 'localization' or 'search'");
+        }
+
+    } catch (err) {
+        error(res, 500, err);
+        console.error(err);
+    }
 }
 
 async function sendSMS(req, res, next) {
