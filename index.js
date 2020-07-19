@@ -1,3 +1,7 @@
+// =============================================================
+// Server
+// =============================================================
+
 // IMPORTS ===============================================
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
@@ -7,7 +11,7 @@ const express = require('express');
 const app = express();
 
 // CONSTANTS - GLOBAL VARS
-const port = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 const API = 'https://zur1he9mqc.execute-api.us-east-1.amazonaws.com/v7';
 
 // CONFIG ===============================================
@@ -30,14 +34,14 @@ app.get('/api/link', sendLink);
 app.get('/api/json', sendJSON);
 
 // LISTEN SERVER ===============================================
-app.listen(port, () => {
-    console.log('App listening on port ' + port);
+app.listen(PORT, () => {
+    console.log('App listening on port ' + PORT);
 });
 
 
 // =============================================================
+// Functions
 // =============================================================
-// Funciones
 
 async function sendAudience(req, res, next) {
     let { threshold, localization } = req.query;
