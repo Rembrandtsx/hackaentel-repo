@@ -1,0 +1,77 @@
+$primary: #221E78;
+$primary_light: #5746A8;
+$primary_dark: #00004B;
+$secondary: #FF560A;
+$secondary_light:#FF8E0A;
+$secondary_dark: #F13802;
+$complementary_pink: #F46C8F;
+$complementary_green: #5CDEB1;
+$gris:#EBEBEB;
+$gris_2:#DDDDDD;
+$gris_3:#9E9FA1;
+$gris_4:#4e5057;
+
+h1{
+    font-size: 60px;
+    margin: 56px 0;
+}
+h2{
+    font-size: 48px;
+    margin: 40px 0;
+}
+h3{
+    font-size: 34px;
+    margin: 34px 0;
+}
+h4{
+    font-size: 24px;
+    margin: 24px 0;
+}
+h5{
+    font-size: 20px;
+    margin: 24px 0;
+}
+p{
+    font-size: 16px;
+    margin: 20px 0;
+}
+p.p2{
+    font-size: 14px;
+    margin: 20px 0;
+}
+p.p3{
+    font-size: 12px;
+    margin: 16px 0;
+}
+p.legal{
+    font-size: 10px;
+    margin: 12px 0;
+}
+@media (max-width: 767.98px){
+    h1{
+        font-size: 24px;
+        margin: 24px 0;
+    }
+    h2{
+        font-size:20px;
+        margin: 24px 0;
+    }
+    h3{
+        font-size: 16px;
+        margin: 20px 0;
+    }
+
+    p{
+        font-size: 12px;
+        margin: 14px 0;
+    }
+    p.p2{
+        font-size: 14px;
+        margin: 20px 0;
+    }
+
+    p.legal{
+        font-size: 10px;
+        margin: 12px 0;
+    }
+}
