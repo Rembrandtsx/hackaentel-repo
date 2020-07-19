@@ -6,6 +6,7 @@
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
 const fs = require('fs');
+const path = require('path');
 
 const express = require('express');
 const app = express();
@@ -176,7 +177,7 @@ async function sendLink(req, res, next) {
                             ref = 'pymes';
                             break;
                         case "MEDIO":
-                            ref = 'micro';
+                            ref = 'micros';
                             break;
                         case "BAJO":
                             ref = 'personas';
@@ -213,8 +214,7 @@ async function sendJSON(req, res, next) {
 
 async function sendDashboard(req, res, next) {
     try {
-        let archivo = fs.readFileSync('./public/index.html');
-        res.status(200).send(archivo);
+        res.sendFile(path.join(__dirname + '/public/index.html'));
     } catch (err) {
         error(res, 500, err.message);
         console.error(err);

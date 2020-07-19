@@ -5,19 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard ejemplo</title>
 
-    <link rel="stylesheet" href="./main.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        header {
+            display: block;
+        }
+        body {
+            margin: 0;
+        }
+
+        #pwbi {
+            height: 80vh;
+            margin: 0 auto;
+            width: 70vw;
+            display: block;
+        }
+        .flex {
+            display: flex;
+            padding: 0 1em;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+        }
+        .btn {
+            border: transparent;
+            display: inline-block;
+            background-color: #221e78;
+            color: #fff;
+            border-radius: 6px;
+            min-width: 120px;
+            min-height: 40px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <header>
-    </header>
-    <main>
+    <div>
         <nav class="flex">
             <h2>Datos MINSA</h2>
-            <button class="btn btn-primary">Ver en riesgo</button>
+            <button id="but-riesgo" class="btn btn-primary">Ver en riesgo</button>
         </nav>
-
-        <iframe id="pwbi" frameborder="0" allowtransparency="true" width="100%" height="100%" src="https://app.powerbi.com/view?r=eyJrIjoiMzZiNTViOTQtZTA2OC00ZTM2LWIyZGEtN2U0MzQ5MWNhNDU1IiwidCI6Ijc5MDVjMWZjLTkzM2MtNDUyYS04YjgzLWIyZTU2NDU1ZDE2YSIsImMiOjR9"></iframe>
-    </main>
-    <script src="./main.js"></script>
+        <main>
+            <div id="riesgo"></div>
+            <iframe id="pwbi" frameborder="0" allowtransparency="true" width="100%" height="100%" src="https://app.powerbi.com/view?r=eyJrIjoiMzZiNTViOTQtZTA2OC00ZTM2LWIyZGEtN2U0MzQ5MWNhNDU1IiwidCI6Ijc5MDVjMWZjLTkzM2MtNDUyYS04YjgzLWIyZTU2NDU1ZDE2YSIsImMiOjR9"></iframe>
+        </main>
+    </div>
+    <script>
+        document.querySelector("#but-riesgo").addEventListener("click", async (event) => {
+            let pet = await fetch("/api/json");
+            let text = pet.text();
+            document.querySelector("#riesgo").innerText = text;
+        });
+    </script>
 </body>
 </html>
