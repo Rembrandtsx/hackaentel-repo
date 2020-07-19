@@ -13,6 +13,7 @@ const app = express();
 // CONSTANTS - GLOBAL VARS
 const PORT = process.env.PORT || 8080;
 const API = 'https://zur1he9mqc.execute-api.us-east-1.amazonaws.com/v7';
+const LINK = 'http://entelsalud.netlify.app/';
 
 // CONFIG ===============================================
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,11 +28,13 @@ app.get('/api/audience', sendAudience);
 // Clients
 app.get('/api/clients', sendClients);
 // sms
-app.get('/api/sendSMS', sendSMS);
+app.get('/api/sms', sendSMS);
 // link
 app.get('/api/link', sendLink);
 // getJson
 app.get('/api/json', sendJSON);
+
+app.get('/dashboard', sendDashboard);
 
 // LISTEN SERVER ===============================================
 app.listen(PORT, () => {
@@ -78,34 +81,123 @@ async function sendAudience(req, res, next) {
         }
 
     } catch (err) {
-        error(res, 500, err);
+        error(res, 500, err.message);
         console.error(err);
     }
 }
 
 async function sendClients(req, res, next) {
     let { localization, value, search } = req.query;
-    
+        
     try {
         if (localization && value && search) {
-            
+            if(localization === "Departamento" || localization === "Provincia" || localization === "Distrito") {
+                let payload = {
+                    [localization]: search,
+                    Valor: value
+                };
+    
+                let request = await fetch(`${API}/cliente/top`, {
+                    method: "post",
+                    body: JSON.stringify(payload),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                let result = await request.json();
+                res.status(200).send(result);
+            }
+            else
+                error(res, 400, "Incorrect query param 'localization'");
         }
-        else {
+        else
             error(res, 400, "Missing mandatory query params 'value', 'localization' or 'search'");
-        }
 
     } catch (err) {
-        error(res, 500, err);
+        error(res, 500, err.message);
         console.error(err);
     }
 }
 
 async function sendSMS(req, res, next) {
+    let { phone, message } = req.query;
 
+    try {
+        if (phone && message) {
+            if(/^\d+$/.test(phone)) {
+                let payload = {
+                    Telefono: phone,
+                    Mensaje: message
+                };
+    
+                let request = await fetch(`${API}/sms`, {
+                    method: "post",
+                    body: JSON.stringify(payload),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                let result = await request.json();
+                res.status(200).send(result);
+            }
+            else
+                error(res, 400, "Incorrect query param 'phone'");
+        }
+        else   
+            error(res, 400, "Missing mandatory query params 'phone' or 'message'");
+            
+    } catch (err) {
+        error(res, 500, err.message);
+        console.error(err);
+    }
 }
 
 async function sendLink(req, res, next) {
-
+    let { id, type } = req.query;
+    
+    try {
+        if(id && type) {
+            if((type === "RUC" || type === "DNI") && /^\d+$/.test(id)) {
+                let payload = {
+                    TipoDocumento: type,
+                    NumeroDocumento: id
+                };
+    
+                let request = await fetch(`${API}/cliente`, {
+                    method: "post",
+                    body: JSON.stringify(payload),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                let result = await request.json();
+                let cliente = result.Cliente;
+                if(cliente) {
+                    let ref = '';
+                    switch (cliente.Segmentacion) {
+                        case "TOP":
+                            ref = 'empresas';
+                            break;
+                        case "GRANDE":
+                            ref = 'pymes';
+                            break;
+                        case "MEDIO":
+                            ref = 'micro';
+                            break;
+                        case "BAJO":
+                            ref = 'personas';
+                            break;
+                    }
+                    let link = `${LINK}${ref}?amount=${cliente.Suscriptores.length}`;
+                    res.status(200).send({ link });
+                }
+                else {
+                    error(res, 404, "No client found for the given query params");
+                }
+            }
+            else
+                error(res, 400, "Incorrect query param 'type'");
+        }
+        else
+            error(res, 400, "Missing mandatory query params 'id' or 'type'");
+    } catch (err) {
+        error(res, 500, err.message);
+        console.error(err);
+    }
 }
 
 async function sendJSON(req, res, next) {
@@ -114,7 +206,17 @@ async function sendJSON(req, res, next) {
         search = JSON.parse(search);
         res.status(200).send(search);
     } catch (err) {
-        error(res, 500, err);
+        error(res, 500, err.message);
+        console.error(err);
+    }
+}
+
+async function sendDashboard(req, res, next) {
+    try {
+        let archivo = fs.readFileSync('./public/index.html');
+        res.status(200).send(archivo);
+    } catch (err) {
+        error(res, 500, err.message);
         console.error(err);
     }
 }
