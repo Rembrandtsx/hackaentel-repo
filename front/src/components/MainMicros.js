@@ -3,7 +3,7 @@ import React from "react";
 import medicine from "../assets/medicine.svg";
 import entel from "../assets/entel.svg";
 import smart from "../assets/smart.png";
-export default function MainPymes({ amount }) {
+export default function MainMicros({ amount }) {
   return (
     <>
       <main>
@@ -203,9 +203,7 @@ export default function MainPymes({ amount }) {
         </h5>
         <div className="card">
           <div className="card-head">
-            <div className="plan-name">
-              Entelesalud Pequeña Y Mediana Empresa
-            </div>
+            <div className="plan-name">Entelesalud Microemrpesa</div>
             <div className="plan-services">
               <div>
                 <svg
@@ -466,17 +464,16 @@ export default function MainPymes({ amount }) {
                 </li>
                 <li>
                   <span>
-                    <b>3 Teleconsultas</b> por chat o <b>1 videollamda</b>
-                    /mes/empleado
+                    <b>1 Teleconsulta</b> por chat o videollamda /mes/empleado
                   </span>
                 </li>
                 <li>
-                  <span>Todo esto por 7 USD /mes /empleado</span>
+                  <span>Todo esto por 5 USD /mes /empleado</span>
                 </li>
               </ul>
             </div>
           </div>
-          <button>Obtenlo ahora por $7 USD/Mes/Empleado</button>
+          <button>Obtenlo ahora por $5 USD/Mes/Empleado</button>
         </div>
       </article>
     </>

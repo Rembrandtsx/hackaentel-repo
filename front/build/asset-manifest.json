@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.14f7cf1e.chunk.css",
+    "main.js": "/static/js/main.c8b7f86a.chunk.js",
+    "main.js.map": "/static/js/main.c8b7f86a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.5fe610d3.js",
+    "runtime-main.js.map": "/static/js/runtime-main.5fe610d3.js.map",
+    "static/js/2.0a5f477a.chunk.js": "/static/js/2.0a5f477a.chunk.js",
+    "static/js/2.0a5f477a.chunk.js.map": "/static/js/2.0a5f477a.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.b1169de8b28106779024d1499af522a7.js": "/precache-manifest.b1169de8b28106779024d1499af522a7.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.14f7cf1e.chunk.css.map": "/static/css/main.14f7cf1e.chunk.css.map",
+    "static/js/2.0a5f477a.chunk.js.LICENSE.txt": "/static/js/2.0a5f477a.chunk.js.LICENSE.txt",
+    "static/media/entel.svg": "/static/media/entel.ff3dbbe2.svg",
+    "static/media/medicine.svg": "/static/media/medicine.09c8ea60.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5fe610d3.js",
+    "static/js/2.0a5f477a.chunk.js",
+    "static/css/main.14f7cf1e.chunk.css",
+    "static/js/main.c8b7f86a.chunk.js"
+  ]
+}

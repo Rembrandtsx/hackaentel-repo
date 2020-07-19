@@ -125,6 +125,15 @@ article.plan {
   display: flex;
   flex-flow: column;
   align-items: center;
+  .main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    .card {
+      width: 95%;
+      margin-bottom: 10px;
+    }
+  }
   .card {
     border: 1px solid #ddd;
     box-sizing: border-box;
@@ -132,5 +141,56 @@ article.plan {
     padding: 30px 20px;
     min-height: 563px;
     width: 40%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+
+    .card-head {
+      .plan-name {
+        background: #ebebeb;
+        color: #4e5057;
+        border-radius: 50px;
+        font-weight: 580;
+        font-size: 14px;
+        padding: 4px;
+        line-height: 108%;
+        display: block;
+        text-align: center;
+        margin: 0 20%;
+      }
+      .plan-services {
+        display: grid;
+        margin: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        div {
+          height: 150px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-flow: column;
+
+          svg {
+            height: 48px;
+          }
+        }
+      }
+    }
+    .card-body {
+      display: flex;
+      justify-content: center;
+      ul {
+        margin: 20px 0;
+        li {
+          color: $complementary_green;
+          span {
+            color: $primary_dark;
+          }
+        }
+      }
+    }
+    button {
+      margin: 0 auto;
+      width: 100%;
+    }
   }
 }
